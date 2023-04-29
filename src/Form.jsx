@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { Link } from "react-router-dom";
 import {db} from "./firebase-config";
 import {collection , getDocs , addDoc} from "firebase/firestore"
-// import Button from '@mui/material/Button';
+
 
 function Form() {
     const [newName, setName] = useState('');
@@ -10,7 +10,6 @@ function Form() {
     const [users,setUsers] = useState([]);
     const userCollection= collection(db,"users");
     const [flag, setFlag]  = useState(false);
-    // console.log(process.env.REACT_APP_MEASUREMENT_ID);
     useEffect(()=>{
         const getUsers = async ()=>{
             const data = await getDocs(userCollection);
@@ -43,7 +42,7 @@ function Form() {
     <div>
 
     </div>
-      <button className=' bg-blue-400 text-white px-3 py-2 rounded-md  font-medium' onClick={createUser} >Submit</button>
+      <button className=' bg-blue-400 text-white px-3 py-2 rounded-md  font-medium hover:bg-blue-700' onClick={createUser} >Submit</button>
       <div className="users">
         {users.map((user)=>{
             return (
@@ -55,7 +54,7 @@ function Form() {
         }
       </div>
       <Link to="/">
-      <button className=' bg-violet-400 text-white px-3 py-2 rounded-md  font-bold mt-2 '>Switch to Home</button></Link>
+      <button className=' bg-violet-400 text-white px-3 py-2 rounded-md  font-bold mt-2 hover:bg-violet-700'>Switch to Home</button></Link>
     </form>
     </div>
 

@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import { EmojiHappyIcon, EmojiSadIcon } from '@heroicons/react/solid';
 import Emoji from 'react-emoji-render';
 
 const Emote = () => {
@@ -11,7 +10,7 @@ const Emote = () => {
 
   return (
     <div className="flex flex-col space-y-2 items-center mx-auto">
-    <div className='flex flex-row w-full items-center jsutify-between mx-auto'> 
+    <div className='flex flex-row  w-full items-center jsutify-between mx-auto'> 
         <Emoji
          text=":)" 
          className="w-16 h-16 cursor-pointer"

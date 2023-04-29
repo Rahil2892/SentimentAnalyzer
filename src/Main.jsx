@@ -13,10 +13,13 @@ const Main = () => {
         </div>
         <div className="flex flex-col basis-2/5 bg-white"> 
          <div className='w-full'><Camera/></div>
-         <div className='w-full'><Emote/></div>
-         <Link to="/form">
-      <button className=' bg-violet-400 text-white px-3 py-2 rounded-md  font-bold mt-2 '>Switch to Form</button>
-        </Link>
+         <div className='w-full '><Emote/></div>
+         <div class="flex justify-center mb-4">
+           <Link to="/form" class="  bg-violet-400 text-white px-3 py-2 rounded-md  font-bold mt-2 hover:bg-violet-700" >
+             <button>Switch to form</button>
+           </Link>
+         </div>
+
         </div>
         
     </div>
