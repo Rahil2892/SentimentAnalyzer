@@ -1,3 +1,26 @@
+# prac-project
+
+The project consits of two different assignments each such that the first one being react application to play video and record the facial expression in real time and the second one being a simple form connected to Firebase/Firestore database at the backend.
+
+## Facial expression recognition ![Screenshot (279)](https://user-images.githubusercontent.com/80545477/235303200-89b9b905-5a00-4559-98e6-294d0a036720.png)
+
+
+The 1st part is built using face-api.js as the main library which completely takes care of face detection to facial expression recognition in real time. The page comprises of 2 major parts :
+
+### video playing 
+
+In this part a video is been played with the help of player component of video-react library 
+
+### Emotion detection
+
+Here the live video image of the user is been displayed and the expressions are captured with the help of face-api.js and an extra feature of emotes is provided with the help of react-emoji-render library so that the user can show active participation. This section also has the button that directs to the 2nd part of the project i.e. a simple-form
+
+## User Form![Screenshot (280)](https://user-images.githubusercontent.com/80545477/235303212-55c5adff-e5f8-4f75-bc7a-50e54e28c9bc.png)
+
+
+This part consist of a simple-form that has 2 input fields i.e. name and email, that fetch the users entry and the submit button that send the data at the backend and all the entries are rendered below the submit button. The form is built using basic tailwindCSS and it is connected to Firestore database at the backend. Also there is a button that redirects to the 1st part. 
+
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
