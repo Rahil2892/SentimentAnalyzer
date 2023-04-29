@@ -1,3 +1,6 @@
+# Deployed project (Live site) : 
+https://prac-project.netlify.app/
+
 # prac-project
 
 The project consits of two different assignments each such that the first one being react application to play video and record the facial expression in real time and the second one being a simple form connected to Firebase/Firestore database at the backend.
