@@ -5,7 +5,8 @@ https://prac-project.netlify.app/
 
 The project consits of two different assignments each such that the first one being react application to play video and record the facial expression in real time and the second one being a simple form connected to Firebase/Firestore database at the backend.
 
-## Facial expression recognition ![Screenshot (279)](https://user-images.githubusercontent.com/80545477/235303200-89b9b905-5a00-4559-98e6-294d0a036720.png)
+## Facial expression recognition ![Screenshot (287)](https://github.com/Rahil2892/prac-project/assets/80545477/a9f03ab3-4fd1-4ecc-9453-ad6d36453fb0)
+
 
 
 The 1st part is built using face-api.js as the main library which completely takes care of face detection to facial expression recognition in real time. The page comprises of 2 major parts :
