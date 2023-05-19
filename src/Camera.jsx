@@ -1,25 +1,15 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useEffect, useRef } from 'react';
 import * as faceapi from 'face-api.js';
 
-const RealTimeFacialExpressionDetection = () => {
-  const [isLoaded, setIsLoaded] = useState(false);
+const Camera = () => {
   const videoRef = useRef();
   const canvasRef = useRef();
 
   useEffect(() => {
     const loadModels = async () => {
-      const MODEL_URL = '/models';
-
-      try {
-        await Promise.all([
-          faceapi.loadSsdMobilenetv1Model(MODEL_URL),
-          faceapi.loadFaceLandmarkModel(MODEL_URL),
-          faceapi.loadFaceExpressionModel(MODEL_URL)
-        ]);
-        setIsLoaded(true);
-      } catch (err) {
-        console.error('Error loading models:', err);
-      }
+      await faceapi.loadSsdMobilenetv1Model('/models');
+      await faceapi.loadFaceLandmarkModel('/models');
+      await faceapi.loadFaceExpressionModel('/models');
     };
 
     const startVideo = async () => {
@@ -27,7 +17,7 @@ const RealTimeFacialExpressionDetection = () => {
         const stream = await navigator.mediaDevices.getUserMedia({ video: true });
         videoRef.current.srcObject = stream;
       } catch (err) {
-        console.error('Error starting video:', err);
+        console.error(err);
       }
     };
 
@@ -37,20 +27,14 @@ const RealTimeFacialExpressionDetection = () => {
       const displaySize = { width: video.offsetWidth, height: video.offsetHeight };
       faceapi.matchDimensions(canvas, displaySize);
 
-      if (isLoaded) {
-        setInterval(async () => {
-          try {
-            const detections = await faceapi.detectAllFaces(video).withFaceLandmarks().withFaceExpressions();
-            const resizedDetections = faceapi.resizeResults(detections, displaySize);
-            canvas.getContext('2d').clearRect(0, 0, canvas.width, canvas.height);
-            faceapi.draw.drawDetections(canvas, resizedDetections);
-            faceapi.draw.drawFaceLandmarks(canvas, resizedDetections);
-            faceapi.draw.drawFaceExpressions(canvas, resizedDetections);
-          } catch (err) {
-            console.error('Error detecting facial expressions:', err);
-          }
-        }, 100);
-      }
+      setInterval(async () => {
+        const detections = await faceapi.detectAllFaces(video).withFaceLandmarks().withFaceExpressions();
+        const resizedDetections = faceapi.resizeResults(detections, displaySize);
+        canvas.getContext('2d').clearRect(0, 0, canvas.width, canvas.height);
+        faceapi.draw.drawDetections(canvas, resizedDetections);
+        faceapi.draw.drawFaceLandmarks(canvas, resizedDetections);
+        faceapi.draw.drawFaceExpressions(canvas, resizedDetections);
+      }, 100);
     };
 
     loadModels();
@@ -59,11 +43,11 @@ const RealTimeFacialExpressionDetection = () => {
   }, []);
 
   return (
-    <div className="">
-      <video className=" " ref={videoRef} autoPlay muted />
+    <div>
+      <video ref={videoRef} autoPlay muted />
       <canvas ref={canvasRef} />
     </div>
   );
 };
 
-export default RealTimeFacialExpressionDetection;
+export default Camera;
